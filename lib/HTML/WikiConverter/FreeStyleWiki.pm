@@ -3,6 +3,7 @@ use 5.008001;
 use strict;
 use warnings;
 use parent 'HTML::WikiConverter';
+use Params::Validate ':types';
 
 our $VERSION = "0.01";
 
@@ -10,10 +11,12 @@ sub attributes {
     +{
         p_strict            => { default => 0 },
         escape_entities => { default => 0 },
+        preserve_tags   => { default => 0, type => BOOLEAN },
     };
 }
 
 sub rules {
+    my ($self) = @_;
     my %rules = (
         hr => { replace => "\n----\n" },
         br => { replace => \&_br },
@@ -52,8 +55,12 @@ sub rules {
         pre => { start => qq{\n}, end => "\n", line_format => 'multi', line_prefix => ' ' },
     );
 
-    $rules{$_} = { preserve => 1 }
-        for qw/ big small tt abbr acronym cite code dfn kbd samp var sup sub /;
+    if ($self->preserve_tags) {
+        for my $tag (qw/ big small tt abbr acronym cite code dfn kbd samp var sup sub /) {
+            $rules{$tag} = { preserve => 1 }
+        }
+    }
+
     return \%rules;
 }
 
@@ -161,9 +168,9 @@ sub preprocess_node {
 1;
 __END__
 
-=encoding utf-8
-
 =pod
+
+=encoding utf-8
 
 =head1 NAME
 
@@ -179,6 +186,18 @@ HTML::WikiConverter::FreeStyleWiki - Convert HTML to FreeStyleWiki markup
 
 This module contains rules for converting HTML into FreeStyleWiki
 markup. See L<HTML::WikiConverter> for additional usage details.
+
+=head1 ATTRIBUTES
+
+In addition to the regular set of attributes recognized by the
+L<HTML::WikiConverter> constructor, this dialect also accepts the
+following attributes that can be passed into the C<new()>
+constructor. See L<HTML::WikiConverter/ATTRIBUTES> for usage details.
+
+=head2 preserve_tags
+
+Possible values: C<0>, C<1>. Default is C<0>.
+Preserve tags: C<'big', 'small', 'tt', 'abbr', 'acronym', 'cite', 'code', 'dfn', 'kbd', 'samp', 'var', 'sup', 'sub>
 
 =head1 LICENSE
 
