@@ -1,5 +1,5 @@
 {
-   "abstract" : "It's new $module",
+   "abstract" : "Convert HTML to FreeStyleWiki markup",
    "author" : [
       "Yusuke Watase <ywatase@gmail.com>"
    ],
@@ -42,6 +42,8 @@
       },
       "runtime" : {
          "requires" : {
+            "HTML::WikiConverter" : "0",
+            "Params::Validate" : "0",
             "perl" : "5.008001"
          }
       },
@@ -52,6 +54,17 @@
       }
    },
    "release_status" : "unstable",
+   "resources" : {
+      "bugtracker" : {
+         "web" : "https://github.com/ywatase/p5-HTML-WikiConverter-FreeStyleWiki/issues"
+      },
+      "homepage" : "https://github.com/ywatase/p5-HTML-WikiConverter-FreeStyleWiki",
+      "repository" : {
+         "type" : "git",
+         "url" : "git://github.com/ywatase/p5-HTML-WikiConverter-FreeStyleWiki.git",
+         "web" : "https://github.com/ywatase/p5-HTML-WikiConverter-FreeStyleWiki"
+      }
+   },
    "version" : "0.01",
    "x_authority" : "cpan:YWATASE"
 }
