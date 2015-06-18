@@ -49,6 +49,7 @@
       },
       "test" : {
          "requires" : {
+            "Test::Differences" : "0",
             "Test::More" : "0.98"
          }
       }
@@ -65,7 +66,7 @@
          "web" : "https://github.com/ywatase/p5-HTML-WikiConverter-FreeStyleWiki"
       }
    },
-   "version" : "0.02",
+   "version" : "0.03",
    "x_authority" : "cpan:YWATASE",
    "x_contributors" : [
       "Yusuke Watase <ywatase+github@gmail.com>"
