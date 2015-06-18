@@ -65,6 +65,9 @@
          "web" : "https://github.com/ywatase/p5-HTML-WikiConverter-FreeStyleWiki"
       }
    },
-   "version" : "0.01",
-   "x_authority" : "cpan:YWATASE"
+   "version" : "0.02",
+   "x_authority" : "cpan:YWATASE",
+   "x_contributors" : [
+      "Yusuke Watase <ywatase+github@gmail.com>"
+   ]
 }
