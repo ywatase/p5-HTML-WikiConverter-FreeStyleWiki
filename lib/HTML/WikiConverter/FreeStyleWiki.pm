@@ -106,13 +106,14 @@ sub _link {
     return $url if $url eq $text;
 
     if ( my $relative_url = $self->get_relative_url($url) ) {
-        return "[$text|$relative_url]" if $relative_url;
+        return "[$text|$relative_url]";
     }
     return "[$text|$url]";
 }
 
 sub get_relative_url {
     my ( $self, $url ) = @_;
+    return unless $self->base_uri;
     $self->base_uri =~ m{/([^/]*)$};
     my $path   = $1 || '';
     my $re_tmp = '(' . quotemeta($path) . '(/[^/]+)?(\?.*)?)$';
