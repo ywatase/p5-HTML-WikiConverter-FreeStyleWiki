@@ -27,6 +27,7 @@ sub make_testcases {
         [ "text<ins>hoge</ins>fuga",                  qq{text__hoge__fuga},           'underline' ],
         [ "text<del>hoge</del>fuga",                  qq{text==hoge==fuga},           'delete' ],
         [ '<a href="http://example.com">Example</a>', '[Example|http://example.com]', 'link' ],
+        [ '<a href="http://example.com/">Example</a>', '[Example|http://example.com/]', 'link' ],
         [ '<blockquote>text1</blockquote>', '""text1', 'blockquote' ],
         [   '<blockquote>text1<blockquote>text2</blockquote></blockquote>', qq{""text1\n""text2},
             'nested blockquote change to plain blockquote'
